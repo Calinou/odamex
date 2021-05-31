@@ -60,14 +60,14 @@ EXTERN_CVAR (sv_teamsinplay)
 gameaction_t	gameaction;
 gamestate_t 	gamestate = GS_STARTUP;
 
-BOOL 			paused;
-BOOL 			sendpause;				// send a pause event next tic
+bool 			paused;
+bool 			sendpause;				// send a pause event next tic
 
 bool			timingdemo; 			// FIXME : delete this variable for odasrv ?
-BOOL	 		viewactive;
+bool	 		viewactive;
 
-BOOL			network_game;			// Describes if a network game is being played
-BOOL			multiplayer;			// Describes if this is a multiplayer game or not
+bool			network_game;			// Describes if a network game is being played
+bool			multiplayer;			// Describes if this is a multiplayer game or not
 
 Players			players;				// The player vector, contains all player information
 player_t		nullplayer;				// The null player
@@ -78,7 +78,7 @@ int 			gametic;
 
 
 FILE			*recorddemo_fp;			// Ch0wW : Keeping this for future serverside demo-recording.
-BOOL 			demoplayback;			// FIXME : remove this serverside !
+bool 			demoplayback;			// FIXME : remove this serverside !
 int				demostartgametic;		// FIXME : remove this serverside !
 
 wbstartstruct_t wminfo; 				// parms for world map / intermission

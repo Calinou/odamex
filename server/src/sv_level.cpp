@@ -84,11 +84,11 @@ int ACS_GlobalVars[NUM_GLOBALVARS];
 // [AM] Stores the reset snapshot
 FLZOMemFile	*reset_snapshot = NULL;
 
-BOOL firstmapinit = true; // Nes - Avoid drawing same init text during every rebirth in single-player servers.
+bool firstmapinit = true; // Nes - Avoid drawing same init text during every rebirth in single-player servers.
 
-BOOL savegamerestore;
+bool savegamerestore;
 
-extern BOOL sendpause;
+extern bool sendpause;
 
 
 bool isFast = false;
@@ -148,7 +148,7 @@ BEGIN_COMMAND (wad) // denis - changes wads
 }
 END_COMMAND (wad)
 
-BOOL 			secretexit;
+bool 			secretexit;
 
 EXTERN_CVAR(sv_shufflemaplist)
 

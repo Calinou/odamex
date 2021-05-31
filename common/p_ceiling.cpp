@@ -263,15 +263,15 @@ void P_ActivateInStasisCeiling (int tag)
 // Move a ceiling up/down and all around!
 //
 // [RH] Added tag, speed, speed2, height, crush, silent, change params
-BOOL EV_DoCeiling (DCeiling::ECeiling type, line_t *line,
+bool EV_DoCeiling (DCeiling::ECeiling type, line_t *line,
 				   int tag, fixed_t speed, fixed_t speed2, fixed_t height,
 				   bool crush, int silent, int change)
 {
 	int 		secnum;
-	BOOL 		rtn;
+	bool 		rtn;
 	sector_t*	sec;
 	DCeiling*	ceiling;
-	BOOL		manual = false;
+	bool		manual = false;
 	fixed_t		targheight = 0;
 
 	rtn = false;
@@ -508,9 +508,9 @@ manual_ceiling:
 // Stop a ceiling from crushing!
 // [RH] Passed a tag instead of a line and rewritten to use list
 //
-BOOL EV_CeilingCrushStop (int tag)
+bool EV_CeilingCrushStop (int tag)
 {
-	BOOL rtn = false;
+	bool rtn = false;
 	DCeiling *scan;
 	TThinkerIterator<DCeiling> iterator;
 
@@ -529,4 +529,3 @@ BOOL EV_CeilingCrushStop (int tag)
 }
 
 VERSION_CONTROL (p_ceiling_cpp, "$Id$")
-

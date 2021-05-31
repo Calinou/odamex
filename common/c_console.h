@@ -79,7 +79,7 @@ void C_DrawMid (void);
 void C_GMidPrint(const char* msg, int color, int msgtime);
 void C_DrawGMid (void);
 
-BOOL C_Responder (event_t *ev);
+bool C_Responder (event_t *ev);
 
 void C_AddTabCommand (const char *name);
 void C_RemoveTabCommand (const char *name);
@@ -87,5 +87,3 @@ void C_RemoveTabCommand (const char *name);
 void C_RevealSecret ();
 
 #endif
-
-

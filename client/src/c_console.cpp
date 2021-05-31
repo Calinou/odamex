@@ -81,8 +81,8 @@ constate_e	ConsoleState = c_up;
 
 extern byte *ConChars;
 
-BOOL		KeysShifted;
-BOOL		KeysCtrl;
+bool		KeysShifted;
+bool		KeysCtrl;
 
 static bool midprinting;
 
@@ -1184,7 +1184,7 @@ static int VPrintf(int printlevel, const char* color_code, const char* format, v
 {
 	char outline[MAX_LINE_LENGTH], outlinelog[MAX_LINE_LENGTH];
 
-	extern BOOL gameisdead;
+	extern bool gameisdead;
 	if (gameisdead)
 		return 0;
 
@@ -2025,7 +2025,7 @@ static bool C_HandleKey(const event_t* ev)
 	return true;
 }
 
-BOOL C_Responder(event_t *ev)
+bool C_Responder(event_t *ev)
 {
 	if (ConsoleState == c_up || ConsoleState == c_rising || ConsoleState == c_risefull || menuactive)
 		return false;

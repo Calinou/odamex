@@ -46,7 +46,7 @@
 
 
 char		com_token[8192];
-BOOL		com_eof;
+bool		com_eof;
 
 char *copystring (const char *s)
 {

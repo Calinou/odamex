@@ -469,13 +469,13 @@ DFloor* DFloor::Clone(sector_t* sec) const
 // HANDLE FLOOR TYPES
 // [RH] Added tag, speed, height, crush, change params.
 //
-BOOL EV_DoFloor (DFloor::EFloor floortype, line_t *line, int tag,
+bool EV_DoFloor (DFloor::EFloor floortype, line_t *line, int tag,
 				 fixed_t speed, fixed_t height, bool crush, int change)
 {
 	int 				secnum;
-	BOOL 				rtn = false;
+	bool 				rtn = false;
 	sector_t*			sec;
-	BOOL				manual = false;
+	bool				manual = false;
 
 	// check if a manual trigger; if so do just the sector on the backside
 	if (co_boomphys && tag == 0)
@@ -525,10 +525,10 @@ manual_floor:
 // jff 3/15/98 added to better support generalized sector types
 // [RH] Added tag parameter.
 //
-BOOL EV_DoChange (line_t *line, EChange changetype, int tag)
+bool EV_DoChange (line_t *line, EChange changetype, int tag)
 {
 	int			secnum;
-	BOOL		rtn;
+	bool		rtn;
 	sector_t	*sec;
 	sector_t	*secm;
 
@@ -573,7 +573,7 @@ BOOL EV_DoChange (line_t *line, EChange changetype, int tag)
 //		by its special. If usespecials is 2, each sector stays in "sync" with
 //		the others.
 //
-BOOL EV_BuildStairs (int tag, DFloor::EStair type, line_t *line,
+bool EV_BuildStairs (int tag, DFloor::EStair type, line_t *line,
 					 fixed_t stairsize, fixed_t speed, int delay, int reset, int igntxt,
 					 int usespecials)
 {
@@ -585,14 +585,14 @@ BOOL EV_BuildStairs (int tag, DFloor::EStair type, line_t *line,
 	int 				texture;
 	int 				ok;
 	int					persteptime;
-	BOOL 				rtn = false;
+	bool 				rtn = false;
 
 	sector_t*			sec = NULL;
 	sector_t*			tsec = NULL;
 	sector_t*			prev = NULL;
 
 	DFloor*				floor = NULL;
-	BOOL				manual = false;
+	bool				manual = false;
 
 	if (speed == 0)
 		return false;
@@ -965,11 +965,11 @@ DElevator* DElevator::Clone(sector_t* sec) const
 // jff 2/22/98 new type to move floor and ceiling in parallel
 // [RH] Added speed, tag, and height parameters and new types.
 //
-BOOL EV_DoElevator (line_t *line, DElevator::EElevator elevtype,
+bool EV_DoElevator (line_t *line, DElevator::EElevator elevtype,
 					fixed_t speed, fixed_t height, int tag)
 {
 	int			secnum;
-	BOOL		rtn;
+	bool		rtn;
 	sector_t*	sec;
 	DElevator*	elevator;
 
@@ -1062,4 +1062,3 @@ BOOL EV_DoElevator (line_t *line, DElevator::EElevator elevtype,
 }
 
 VERSION_CONTROL (p_floor_cpp, "$Id$")
-

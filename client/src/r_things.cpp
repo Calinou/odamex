@@ -125,7 +125,7 @@ void R_CacheSprite (spritedef_t *sprite)
 //
 //	16-rotational sprite code adapted from Doom Retro.
 //
-static void R_InstallSpriteLump (int lump, unsigned frame, unsigned rot, BOOL flipped)
+static void R_InstallSpriteLump (int lump, unsigned frame, unsigned rot, bool flipped)
 {
 	unsigned rotation;
 
@@ -881,7 +881,7 @@ void R_DrawPSprite(pspdef_t* psp, unsigned flags)
 	spritedef_t*		sprdef;
 	spriteframe_t*		sprframe;
 	int 				lump;
-	BOOL 				flip;
+	bool 				flip;
 	vissprite_t*		vis;
 	vissprite_t 		avis;
 
@@ -907,7 +907,7 @@ void R_DrawPSprite(pspdef_t* psp, unsigned flags)
 	sprframe = &sprdef->spriteframes[ psp->state->frame & FF_FRAMEMASK ];
 
 	lump = sprframe->lump[0];
-	flip = static_cast<BOOL>(sprframe->flip[0]);
+	flip = static_cast<bool>(sprframe->flip[0]);
 
 	if (sprframe->width[0] == SPRITE_NEEDS_INFO)
 		R_CacheSprite (sprdef);	// [RH] speeds up game startup time

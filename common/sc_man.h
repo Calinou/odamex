@@ -36,17 +36,17 @@ void SC_OpenLumpNum (int lump, const char *name);
 void SC_Close (void);
 void SC_SavePos (void);
 void SC_RestorePos (void);
-BOOL SC_GetString (void);
+bool SC_GetString (void);
 void SC_MustGetString (void);
 void SC_MustGetStringName (const char *name);
-BOOL SC_GetNumber (void);
+bool SC_GetNumber (void);
 void SC_MustGetNumber (void);
-BOOL SC_GetFloat (void);
+bool SC_GetFloat (void);
 bool SC_CheckFloat();
 void SC_MustGetFloat (void);
 void SC_UnGet (void);
 //boolean SC_Check(void);
-BOOL SC_Compare (const char *text);
+bool SC_Compare (const char *text);
 int SC_MatchString (const char **strings);
 int SC_MustMatchString (const char **strings);
 void STACK_ARGS SC_ScriptError(const char* format, ...);
@@ -55,10 +55,9 @@ extern char *sc_String;
 extern int sc_Number;
 extern float sc_Float;
 extern int sc_Line;
-extern BOOL sc_End;
-extern BOOL sc_Crossed;
-extern BOOL sc_FileScripts;
+extern bool sc_End;
+extern bool sc_Crossed;
+extern bool sc_FileScripts;
 extern char *sc_ScriptsDir;
 
 #endif //__SC_MAN_H__
-

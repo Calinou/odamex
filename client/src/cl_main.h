@@ -32,7 +32,7 @@
 #include <string>
 
 extern netadr_t  serveraddr;
-extern BOOL      connected;
+extern bool      connected;
 extern int       connecttimeout;
 
 extern bool      noservermsgs;

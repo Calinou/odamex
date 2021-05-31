@@ -356,10 +356,10 @@ DDoor* DDoor::Clone(sector_t* sec) const
 	return door;
 }
 
-BOOL EV_DoDoor (DDoor::EVlDoor type, line_t *line, AActor *thing,
+bool EV_DoDoor (DDoor::EVlDoor type, line_t *line, AActor *thing,
                 int tag, int speed, int delay, card_t lock)
 {
-	BOOL		rtn = false;
+	bool		rtn = false;
 	int 		secnum;
 	sector_t*	sec;
     DDoor *door;
@@ -502,4 +502,3 @@ void P_SpawnDoorRaiseIn5Mins (sector_t *sec)
 }
 
 VERSION_CONTROL (p_doors_cpp, "$Id$")
-

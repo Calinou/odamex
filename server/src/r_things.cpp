@@ -85,7 +85,7 @@ void R_CacheSprite (spritedef_t *sprite)
 // [RH] Removed checks for coexistance of rotation 0 with other
 //		rotations and made it look more like BOOM's version.
 //
-static void R_InstallSpriteLump (int lump, unsigned frame, unsigned rotation, BOOL flipped)
+static void R_InstallSpriteLump (int lump, unsigned frame, unsigned rotation, bool flipped)
 {
 	if (frame >= MAX_SPRITE_FRAMES || rotation > 8)
 		I_FatalError ("R_InstallSpriteLump: Bad frame characters in lump %i", lump);
@@ -260,4 +260,3 @@ void R_InitSprites (const char **namelist)
 }
 
 VERSION_CONTROL (r_things_cpp, "$Id$")
-

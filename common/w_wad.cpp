@@ -309,7 +309,7 @@ std::string W_AddFile(std::string filename)
 //
 //
 
-static BOOL IsMarker (const lumpinfo_t *lump, const char *marker)
+static bool IsMarker (const lumpinfo_t *lump, const char *marker)
 {
 	return (lump->namespc == ns_global) && (!strncmp (lump->name, marker, 8) ||
 			(*(lump->name) == *marker && !strncmp (lump->name + 1, marker, 7)));
@@ -327,7 +327,7 @@ void W_MergeLumps (const char *start, const char *end, int space)
 	char ustart[8], uend[8];
 	lumpinfo_t *newlumpinfos;
 	unsigned newlumps, oldlumps;
-	BOOL insideBlock;
+	bool insideBlock;
 	unsigned flatHack, i;
 
 	strncpy(ustart, start, 8);

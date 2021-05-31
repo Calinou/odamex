@@ -553,7 +553,7 @@ void WI_drawOnLnode (int n, lumpHandle_t* c, int numpatches)
 	int 	top;
 	int 	right;
 	int 	bottom;
-	BOOL 	fits = false;
+	bool 	fits = false;
 
 	i = 0;
 	do
@@ -816,7 +816,7 @@ void WI_updateNoState (void)
 	}
 }
 
-static BOOL snl_pointeron = false;
+static bool snl_pointeron = false;
 
 void WI_initShowNextLoc (void)
 {
@@ -931,7 +931,7 @@ void WI_updateNetgameStats()
 {
 	unsigned int i;
 	int fsum;
-	BOOL stillticking;
+	bool stillticking;
 
 	WI_updateAnimatedBack();
 

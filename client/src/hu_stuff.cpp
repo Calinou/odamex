@@ -111,7 +111,7 @@ int V_TextScaleYAmount();
 
 void HU_Init();
 void HU_Drawer();
-BOOL HU_Responder(event_t *ev);
+bool HU_Responder(event_t *ev);
 
 lumpHandle_t sbline;
 
@@ -155,7 +155,7 @@ void HU_UnsetChatMode()
 }
 
 
-BOOL altdown;
+bool altdown;
 
 void ST_voteDraw (int y);
 
@@ -242,7 +242,7 @@ void HU_ReleaseKeyStates()
 //
 // Chat mode text entry
 //
-BOOL HU_Responder(event_t *ev)
+bool HU_Responder(event_t *ev)
 {
 	if (ev->data1 == OKEY_RALT || ev->data1 == OKEY_LALT || ev->data1 == OKEY_HAT1)
 	{

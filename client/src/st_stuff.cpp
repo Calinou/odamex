@@ -488,7 +488,7 @@ EXTERN_CVAR (sv_allowcheats)
 
 // Checks whether cheats are enabled or not, returns true if they're NOT enabled
 // and false if they ARE enabled (stupid huh? not my work [Russell])
-BOOL CheckCheatmode (void)
+bool CheckCheatmode (void)
 {
 	// [SL] 2012-04-04 - Don't allow cheat codes to be entered while playing
 	// back a netdemo
@@ -947,7 +947,7 @@ void ST_updateFaceWidget(void)
 	angle_t 	diffang;
 	static int	lastattackdown = -1;
 	static int	priority = 0;
-	BOOL	 	doevilgrin;
+	bool	 	doevilgrin;
 
 	player_t *plyr = &displayplayer();
 

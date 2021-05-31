@@ -732,7 +732,7 @@ bool R_PlaneInitData(IWindowSurface* surface)
 //
 // R_AlignFlat
 //
-BOOL R_AlignFlat (int linenum, int side, int fc)
+bool R_AlignFlat (int linenum, int side, int fc)
 {
 	line_t *line = lines + linenum;
 	sector_t *sec = side ? line->backsector : line->frontsector;
@@ -771,4 +771,3 @@ BOOL R_AlignFlat (int linenum, int side, int fc)
 }
 
 VERSION_CONTROL (r_plane_cpp, "$Id$")
-

@@ -62,7 +62,7 @@ extern	weaponinfo_t	weaponinfo[NUMWEAPONS+1];
 struct gitem_s
 {
 		const char		*classname;
-		BOOL	 		(*pickup)(player_s *ent, class AActor *other);
+		bool	 		(*pickup)(player_s *ent, class AActor *other);
 		void			(*use)(player_s *ent, struct gitem_s *item);
 		byte			flags;
 		byte			offset; 				// For Weapon, Ammo, Armor, Key: Offset in appropriate table
@@ -88,4 +88,3 @@ gitem_t* FindCardItem(card_t card);
 #define ITEM_INDEX(i)	((i)-itemlist)
 
 #endif //__D_ITEMS_H__
-

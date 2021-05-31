@@ -65,9 +65,9 @@ char *sc_String;
 int sc_Number;
 float sc_Float;
 int sc_Line;
-BOOL sc_End;
-BOOL sc_Crossed;
-BOOL sc_FileScripts = false;
+bool sc_End;
+bool sc_Crossed;
+bool sc_FileScripts = false;
 char *sc_ScriptsDir;
 
 // PRIVATE DATA DEFINITIONS ------------------------------------------------
@@ -77,10 +77,10 @@ static char *ScriptBuffer;
 static char *ScriptPtr;
 static char *ScriptEndPtr;
 static char StringBuffer[MAX_STRING_SIZE];
-static BOOL ScriptOpen = false;
+static bool ScriptOpen = false;
 static int ScriptSize;
-static BOOL AlreadyGot = false;
-static BOOL FreeScript = false;
+static bool AlreadyGot = false;
+static bool FreeScript = false;
 static char *SavedScriptPtr;
 static int SavedScriptLine;
 
@@ -218,10 +218,10 @@ void SC_RestorePos (void)
 //
 // SC_GetString
 //
-BOOL SC_GetString (void)
+bool SC_GetString (void)
 {
 	char *text;
-	BOOL foundToken;
+	bool foundToken;
 
 	CheckOpen();
 	if (AlreadyGot)
@@ -383,7 +383,7 @@ void SC_MustGetStringName (const char *name)
 //
 // SC_GetNumber
 //
-BOOL SC_GetNumber (void)
+bool SC_GetNumber (void)
 {
 	char *stopper;
 
@@ -427,7 +427,7 @@ void SC_MustGetNumber (void)
 //
 // SC_GetFloat
 //
-BOOL SC_GetFloat (void)
+bool SC_GetFloat (void)
 {
 	char *stopper;
 
@@ -505,7 +505,7 @@ void SC_UnGet (void)
 
 
 /*
-BOOL SC_Check(void)
+bool SC_Check(void)
 {
 	char *text;
 
@@ -582,7 +582,7 @@ int SC_MustMatchString (const char **strings)
 //
 // SC_Compare
 //
-BOOL SC_Compare (const char *text)
+bool SC_Compare (const char *text)
 {
 	return (stricmp (text, sc_String) == 0);
 }

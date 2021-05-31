@@ -101,7 +101,7 @@ int				lightscaleymul;
 int			extralight;
 
 // [RH] ignore extralight and fullbright
-BOOL		foggy;
+bool		foggy;
 
 fixed_t			freelookviewheight;
 
@@ -250,4 +250,3 @@ void R_Init (void)
 }
 
 VERSION_CONTROL (r_main_cpp, "$Id$")
-

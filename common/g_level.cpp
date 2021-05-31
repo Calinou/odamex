@@ -310,7 +310,7 @@ struct tagged_info_t {
 	};
 };
 
-BOOL HexenHack;
+bool HexenHack;
 
 enum EMIType
 {
@@ -1302,7 +1302,7 @@ static void ParseMapInfoLump(int lump, const char* lumpname)
 //
 void G_ParseMapInfo (void)
 {
-	BOOL found_zmapinfo = false;
+	bool found_zmapinfo = false;
 
 	int lump = -1;
 	while ((lump = W_FindLump("ZMAPINFO", lump)) != -1)

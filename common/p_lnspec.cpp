@@ -30,7 +30,7 @@
 #include "tables.h"
 #include "i_system.h"
 
-#define FUNC(a) static BOOL a (line_t *ln, AActor *it, int arg0, int arg1, \
+#define FUNC(a) static bool a (line_t *ln, AActor *it, int arg0, int arg1, \
 							   int arg2, int arg3, int arg4)
 
 #define SPEED(a)		((a)*(FRACUNIT/8))
@@ -45,14 +45,14 @@ extern bool HasBehavior;
 extern bool s_SpecialFromServer;
 
 // Set true if this special was activated from inside a script.
-BOOL InScript;
+bool InScript;
 
 // 9/11/10: Add poly action definitions here, even though they're in p_local...
 // Why are these needed here?  Linux won't compile without these definitions??
 //
-BOOL EV_MovePoly (line_t *line, int polyNum, int speed, angle_t angle, fixed_t dist, BOOL overRide);
-BOOL EV_OpenPolyDoor (line_t *line, int polyNum, int speed, angle_t angle, int delay, int distance, podoortype_t type);
-BOOL EV_RotatePoly (line_t *line, int polyNum, int speed, int byteAngle, int direction, BOOL overRide);
+bool EV_MovePoly (line_t *line, int polyNum, int speed, angle_t angle, fixed_t dist, bool overRide);
+bool EV_OpenPolyDoor (line_t *line, int polyNum, int speed, angle_t angle, int delay, int distance, podoortype_t type);
+bool EV_RotatePoly (line_t *line, int polyNum, int speed, int byteAngle, int direction, bool overRide);
 
 //
 // P_LineSpecialMovesSector
@@ -496,7 +496,7 @@ FUNC(LS_Generic_Stairs)
 // Generic_Stairs (tag, speed, step, dir/igntxt, reset)
 {
 	DFloor::EStair type = (arg3 & 1) ? DFloor::buildUp : DFloor::buildDown;
-	BOOL res = EV_BuildStairs (arg0, type, ln,
+	bool res = EV_BuildStairs (arg0, type, ln,
 							   arg2 * FRACUNIT, SPEED(arg1), 0, arg4, arg3 & 2, 0);
 
 	if (res && ln && (ln->flags & ML_REPEAT_SPECIAL) && ln->special == Generic_Stairs)
@@ -809,7 +809,7 @@ FUNC(LS_Teleport)
 // Teleport (tid, tag, nosourcefog)
 {
 	if(!it) return false;
-	BOOL result;
+	bool result;
 
 	if (HasBehavior)
 		// [AM] Use ZDoom-style teleport for Hexen-format maps
@@ -1642,7 +1642,7 @@ FUNC(LS_Line_AlignCeiling)
 // Line_AlignCeiling (lineid, side)
 {
 	int line = P_FindLineFromID (arg0, -1);
-	BOOL ret = 0;
+	bool ret = 0;
 
 	if (line < 0)
 		I_Error ("Sector_AlignCeiling: Lineid %d is undefined", arg0);
@@ -1657,7 +1657,7 @@ FUNC(LS_Line_AlignFloor)
 // Line_AlignFloor (lineid, side)
 {
 	int line = P_FindLineFromID (arg0, -1);
-	BOOL ret = 0;
+	bool ret = 0;
 
 	if (line < 0)
 		I_Error ("Sector_AlignFloor: Lineid %d is undefined", arg0);
@@ -2036,7 +2036,7 @@ EXTERN_CVAR (sv_fraglimit)
 EXTERN_CVAR (sv_allowexit)
 EXTERN_CVAR (sv_fragexitswitch)
 
-BOOL CheckIfExitIsGood (AActor *self)
+bool CheckIfExitIsGood (AActor *self)
 {
 	if (self == NULL || !serverside)
 		return false;

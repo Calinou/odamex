@@ -249,7 +249,7 @@ void cht_DoCheat (player_t *player, int cheat)
 
 void cht_Give (player_t *player, const char *name)
 {
-	BOOL giveall;
+	bool giveall;
 	int i;
 	gitem_t *it;
 
@@ -371,4 +371,3 @@ void cht_Suicide (player_t *plyr)
 }
 
 VERSION_CONTROL (m_cheat_cpp, "$Id$")
-

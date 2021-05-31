@@ -327,7 +327,7 @@ static bool followplayer = true; // specifies whether to follow the player aroun
 extern byte cheat_amap_seq[5];
 cheatseq_t cheat_amap = { cheat_amap_seq, 0 };
 
-static BOOL stopped = true;
+static bool stopped = true;
 
 extern NetDemo netdemo;
 
@@ -589,7 +589,7 @@ am_color_t AM_BestColor(const argb_t* palette_colors, const int r, const int g, 
 	return c;
 }
 
-void AM_initColors (BOOL overlayed)
+void AM_initColors (bool overlayed)
 {
 	// Look up the colors in the current palette:
 	const argb_t* palette_colors = V_GetDefaultPalette()->colors;
@@ -800,7 +800,7 @@ END_COMMAND (togglemap)
 //
 // Handle events (user inputs) in automap mode
 //
-BOOL AM_Responder (event_t *ev)
+bool AM_Responder (event_t *ev)
 {
 	if (automapactive && (ev->type == ev_keydown || ev->type == ev_keyup))
 	{
@@ -973,7 +973,7 @@ void AM_clearFB (am_color_t color)
 // faster reject and precalculated slopes.  If the speed is needed,
 // use a hash algorithm to handle  the common cases.
 //
-BOOL AM_clipMline (mline_t *ml, fline_t *fl)
+bool AM_clipMline (mline_t *ml, fline_t *fl)
 {
 	enum {
 		LEFT	=1,

@@ -376,7 +376,7 @@ typedef struct msecnode_s
 	struct msecnode_s	*m_tnext;	// next msecnode_t for this thing
 	struct msecnode_s	*m_sprev;	// prev msecnode_t for this sector
 	struct msecnode_s	*m_snext;	// next msecnode_t for this sector
-	BOOL visited;	// killough 4/4/98, 4/7/98: used in search algorithms
+	bool visited;	// killough 4/4/98, 4/7/98: used in search algorithms
 } msecnode_t;
 
 //
@@ -415,7 +415,7 @@ typedef struct FPolyObj
 	int			tag;			// reference tag assigned in HereticEd
 	int			bbox[4];
 	int			validcount;
-	BOOL		crush; 			// should the polyobj attempt to crush mobjs?
+	bool		crush; 			// should the polyobj attempt to crush mobjs?
 	int			seqType;
 	fixed_t		size;			// polyobj size (area of POLY_AREAUNIT == size of FRACUNIT)
 	DThinker	*specialdata;	// pointer to a thinker, if the poly is moving
@@ -661,5 +661,3 @@ struct visplane_s
 typedef struct visplane_s visplane_t;
 
 #endif
-
-

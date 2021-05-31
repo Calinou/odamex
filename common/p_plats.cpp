@@ -391,14 +391,14 @@ DPlat* DPlat::Clone(sector_t* sec) const
 //	[RH] Changed amount to height and added delay,
 //		 lip, change, tag, and speed parameters.
 //
-BOOL EV_DoPlat (int tag, line_t *line, DPlat::EPlatType type, fixed_t height,
+bool EV_DoPlat (int tag, line_t *line, DPlat::EPlatType type, fixed_t height,
 				int speed, int delay, fixed_t lip, int change)
 {
 	DPlat *plat;
 	int secnum;
 	sector_t *sec;
-	int rtn = false;
-	BOOL manual = false;
+	bool rtn = false;
+	bool manual = false;
 
 	// [RH] If tag is zero, use the sector on the back side
 	//		of the activating line (if any).
@@ -489,4 +489,3 @@ void EV_StopPlat (int tag)
 
 
 VERSION_CONTROL (p_plats_cpp, "$Id$")
-

@@ -38,8 +38,6 @@
 #include "doomtype.h"
 #include "m_memio.h"
 
-QWORD mus2mid(MEMFILE *musinput, MEMFILE *midioutput);
+int mus2mid(MEMFILE *musinput, MEMFILE *midioutput);
 
 #endif /* #ifndef MUS2MID_H */
-
-

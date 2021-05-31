@@ -113,7 +113,7 @@ bool		recv_full_update = false;
 
 std::string connectpasshash = "";
 
-BOOL      connected;
+bool      connected;
 netadr_t  serveraddr; // address of a server
 netadr_t  lastconaddr;
 
@@ -654,7 +654,7 @@ void CL_DisconnectClient(void)
 	CL_CheckDisplayPlayer();
 }
 
-extern BOOL advancedemo;
+extern bool advancedemo;
 QWORD nextstep = 0;
 int canceltics = 0;
 
@@ -2257,7 +2257,7 @@ void CL_UpdatePlayer()
 	p->snapshots.addSnapshot(newsnap);
 }
 
-ItemEquipVal P_GiveWeapon(player_t *player, weapontype_t weapon, BOOL dropped);
+ItemEquipVal P_GiveWeapon(player_t *player, weapontype_t weapon, bool dropped);
 
 void CL_UpdatePlayerState()
 {

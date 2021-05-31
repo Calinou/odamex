@@ -90,7 +90,7 @@ static byte OrgHeights[] = {
 static char *PatchFile, *PatchPt;
 static char *Line1, *Line2;
 static int	 dversion, pversion;
-static BOOL  including, includenotext;
+static bool  including, includenotext;
 
 // English strings for DeHackEd replacement.
 static StringTable ENGStrings;
@@ -574,10 +574,10 @@ static const struct {
 };
 
 static int HandleMode (const char *mode, int num);
-static BOOL HandleKey (const struct Key *keys, void *structure, const char *key, int value, const int structsize = 0);
+static bool HandleKey (const struct Key *keys, void *structure, const char *key, int value, const int structsize = 0);
 static void BackupData (void);
-static void ChangeCheat (char *newcheat, byte *cheatseq, BOOL needsval);
-static BOOL ReadChars (char **stuff, int size);
+static void ChangeCheat (char *newcheat, byte *cheatseq, bool needsval);
+static bool ReadChars (char **stuff, int size);
 static char *igets (void);
 static int GetLine (void);
 
@@ -609,7 +609,7 @@ static int HandleMode (const char *mode, int num)
 	return i;
 }
 
-static BOOL HandleKey (const struct Key *keys, void *structure, const char *key, int value, const int structsize)
+static bool HandleKey (const struct Key *keys, void *structure, const char *key, int value, const int structsize)
 {
 	while (keys->name && stricmp (keys->name, key))
 		keys++;
@@ -693,7 +693,7 @@ void D_UndoDehPatch()
 	deh = backupDeh;
 }
 
-static void ChangeCheat (char *newcheat, byte *cheatseq, BOOL needsval)
+static void ChangeCheat (char *newcheat, byte *cheatseq, bool needsval)
 {
 	while (*cheatseq != 0xff && *cheatseq != 1 && *newcheat) {
 		*cheatseq++ = SCRAMBLE(*newcheat);
@@ -709,7 +709,7 @@ static void ChangeCheat (char *newcheat, byte *cheatseq, BOOL needsval)
 	*cheatseq = 0xff;
 }
 
-static BOOL ReadChars (char **stuff, int size)
+static bool ReadChars (char **stuff, int size)
 {
 	char *str = *stuff;
 
@@ -1006,7 +1006,7 @@ static int PatchThing (int thingy)
 	};
 	int result;
 	mobjinfo_t *info, dummy;
-	BOOL hadHeight = false;
+	bool hadHeight = false;
 
 	thingNum--;
 	if (thingNum < NUMMOBJTYPES) {
@@ -1037,7 +1037,7 @@ static int PatchThing (int thingy)
 			else if (!stricmp (Line1, "Bits"))
 			{
 				int value = 0, value2 = 0;
-				BOOL vchanged = false, v2changed = false;
+				bool vchanged = false, v2changed = false;
 				char *strval;
 
 				for (strval = Line2; (strval = strtok (strval, ",+| \t\f\r")); strval = NULL)
@@ -1322,7 +1322,7 @@ static int PatchCheats (int dummy)
 	static const struct {
 		const char *name;
 		byte *cheatseq;
-		BOOL needsval;
+		bool needsval;
 	} keys[] = {
 		{ "Change music",		cheat_mus_seq,				 true },
 		{ "Chainsaw",			cheat_choppers_seq,			 false },
@@ -1535,7 +1535,7 @@ static int PatchText (int oldSize)
 	char *oldStr;
 	char *newStr;
 	char *temp;
-	BOOL good;
+	bool good;
 	int result;
 	int i;
 	const OString* name = NULL;

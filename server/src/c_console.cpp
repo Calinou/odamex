@@ -100,7 +100,7 @@ char *TimeStamp()
  */
 extern int PrintString (int printlevel, const char *outline);
 
-extern BOOL gameisdead;
+extern bool gameisdead;
 
 int VPrintf(int printlevel, const char* format, va_list parms)
 {

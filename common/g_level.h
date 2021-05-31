@@ -99,7 +99,7 @@ struct level_info_t {
 	FLZOMemFile*	snapshot;
 	acsdefered_s*	defered;
 
-	BOOL exists() const
+	bool exists() const
 	{
 		return this->mapname[0] != '\0';
 	}
@@ -137,7 +137,7 @@ struct level_pwad_info_t
 	float			gravity;
 	float			aircontrol;
 
-	BOOL exists() const
+	bool exists() const
 	{
 		return this->mapname[0] != '\0';
 	}
@@ -203,7 +203,7 @@ struct cluster_info_t {
 	int				flags;
 	char			finalepic[9];
 
-	BOOL exists() const
+	bool exists() const
 	{
 		return this->cluster != 0;
 	}
@@ -251,8 +251,8 @@ public:
 extern int ACS_WorldVars[NUM_WORLDVARS];
 extern int ACS_GlobalVars[NUM_GLOBALVARS];
 
-extern BOOL savegamerestore;
-extern BOOL HexenHack;		// Semi-Hexen-compatibility mode
+extern bool savegamerestore;
+extern bool HexenHack;		// Semi-Hexen-compatibility mode
 
 void G_InitNew (const char *mapname);
 void G_ChangeMap (void);

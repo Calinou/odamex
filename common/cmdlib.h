@@ -85,7 +85,7 @@ bool ValidString(const std::string&);
 char	*COM_Parse (char *data);
 
 extern	char	com_token[8192];
-extern	BOOL	com_eof;
+extern	bool	com_eof;
 
 char	*copystring(const char *s);
 

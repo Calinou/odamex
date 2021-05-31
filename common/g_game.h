@@ -54,13 +54,13 @@ void G_PlayDemo(char* name);
 void G_DoPlayDemo(bool justStreamInput = false);
 void G_TimeDemo(const char* name);
 void G_TestDemo(const char* name);
-BOOL G_CheckDemoStatus(void);
+bool G_CheckDemoStatus(void);
 void G_CleanupDemo();
 
 void G_WorldDone(void);
 
 void G_Ticker(void);
-BOOL G_Responder(event_t*	ev);
+bool G_Responder(event_t*	ev);
 
 void G_ScreenShot(const char* filename);
 

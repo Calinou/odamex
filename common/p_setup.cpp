@@ -125,7 +125,7 @@ AActor**		blocklinks;		// for thing chains
 //	used as a PVS lookup as well.
 //
 byte*			rejectmatrix;
-BOOL			rejectempty;
+bool			rejectempty;
 
 
 // Maintain single and multi player starting spots.

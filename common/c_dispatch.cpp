@@ -810,7 +810,7 @@ std::string C_QuoteString(const std::string &argstr)
 	return buffer.str();
 }
 
-static int DumpHash (BOOL aliases)
+static int DumpHash (bool aliases)
 {
 	int count = 0;
 

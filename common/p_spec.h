@@ -170,7 +170,7 @@ protected:
 	int m_Y;				// Y of point source if point pusher
 	int m_Affectee;			// Number of affected sector
 
-	friend BOOL PIT_PushThing (AActor *thing);
+	friend bool PIT_PushThing (AActor *thing);
 };
 
 inline FArchive &operator<< (FArchive &arc, DPusher::EPusher type)
@@ -182,7 +182,7 @@ inline FArchive &operator>> (FArchive &arc, DPusher::EPusher &out)
 	BYTE in; arc >> in; out = (DPusher::EPusher)in; return arc;
 }
 
-BOOL P_CheckKeys (player_t *p, card_t lock, BOOL remote);
+bool P_CheckKeys (player_t *p, card_t lock, bool remote);
 
 // Define values for map objects
 #define MO_TELEPORTMAN			14
@@ -191,7 +191,7 @@ BOOL P_CheckKeys (player_t *p, card_t lock, BOOL remote);
 // [RH] If a deathmatch game, checks to see if noexit is enabled.
 //		If so, it kills the player and returns false. Otherwise,
 //		it returns true, and the player is allowed to live.
-BOOL	CheckIfExitIsGood (AActor *self);
+bool	CheckIfExitIsGood (AActor *self);
 
 // at game start
 void	P_InitPicAnims (void);
@@ -519,7 +519,7 @@ protected:
 private:
 	DPlat ();
 
-	friend BOOL	EV_DoPlat (int tag, line_t *line, EPlatType type,
+	friend bool	EV_DoPlat (int tag, line_t *line, EPlatType type,
 						   fixed_t height, int speed, int delay, fixed_t lip, int change);
 	friend void EV_StopPlat (int tag);
 	friend void P_ActivateInStasis (int tag);
@@ -604,7 +604,7 @@ inline FArchive &operator>> (FArchive &arc, DPillar::EPillarState &out)
 	BYTE in; arc >> in; out = (DPillar::EPillarState)in; return arc;
 }
 
-BOOL EV_DoPillar (DPillar::EPillar type, int tag, fixed_t speed, fixed_t height,
+bool EV_DoPillar (DPillar::EPillar type, int tag, fixed_t speed, fixed_t height,
 				  fixed_t height2, bool crush);
 void P_SpawnDoorCloseIn30 (sector_t *sec);
 void P_SpawnDoorRaiseIn5Mins (sector_t *sec);
@@ -662,7 +662,7 @@ public:
     line_t      *m_Line;
 
 protected:
-	friend BOOL	EV_DoDoor (DDoor::EVlDoor type, line_t *line, AActor *thing,
+	friend bool	EV_DoDoor (DDoor::EVlDoor type, line_t *line, AActor *thing,
                                    int tag, int speed, int delay, card_t lock);
 	friend void P_SpawnDoorCloseIn30 (sector_t *sec);
 	friend void P_SpawnDoorRaiseIn5Mins (sector_t *sec);
@@ -773,10 +773,10 @@ protected:
 private:
 	DCeiling ();
 
-	friend BOOL EV_DoCeiling (DCeiling::ECeiling type, line_t *line,
+	friend bool EV_DoCeiling (DCeiling::ECeiling type, line_t *line,
 		int tag, fixed_t speed, fixed_t speed2, fixed_t height,
 		bool crush, int silent, int change);
-	friend BOOL EV_CeilingCrushStop (int tag);
+	friend bool EV_CeilingCrushStop (int tag);
 	friend void P_ActivateInStasisCeiling (int tag);
 };
 
@@ -893,10 +893,10 @@ public:
 	int			m_Change;
 
 protected:
-	friend BOOL EV_BuildStairs (int tag, DFloor::EStair type, line_t *line,
+	friend bool EV_BuildStairs (int tag, DFloor::EStair type, line_t *line,
 		fixed_t stairsize, fixed_t speed, int delay, int reset, int igntxt,
 		int usespecials);
-	friend BOOL EV_DoFloor (DFloor::EFloor floortype, line_t *line, int tag,
+	friend bool EV_DoFloor (DFloor::EFloor floortype, line_t *line, int tag,
 		fixed_t speed, fixed_t height, bool crush, int change);
 	friend int EV_DoDonut (int tag, fixed_t pillarspeed, fixed_t slimespeed);
 private:
@@ -958,7 +958,7 @@ public:
 	EElevatorState m_Status;
 	
 protected:
-	friend BOOL EV_DoElevator (line_t *line, DElevator::EElevator type, fixed_t speed,
+	friend bool EV_DoElevator (line_t *line, DElevator::EElevator type, fixed_t speed,
 		fixed_t height, int tag);
 private:
 	DElevator ();
@@ -988,19 +988,19 @@ enum EChange
 	numChangeOnly
 };
 
-BOOL EV_DoChange (line_t *line, EChange changetype, int tag);
+bool EV_DoChange (line_t *line, EChange changetype, int tag);
 
 
 
 //
 // P_TELEPT
 //
-BOOL EV_Teleport (int tid, int tag, int arg0, int side, AActor *thing, int nostop);
-BOOL EV_LineTeleport (line_t *line, int side, AActor *thing);
-BOOL EV_SilentTeleport(int tid, int useangle, int tag, int keepheight, line_t* line,
+bool EV_Teleport (int tid, int tag, int arg0, int side, AActor *thing, int nostop);
+bool EV_LineTeleport (line_t *line, int side, AActor *thing);
+bool EV_SilentTeleport(int tid, int useangle, int tag, int keepheight, line_t* line,
                        int side, AActor* thing);
-BOOL EV_SilentLineTeleport (line_t *line, int side, AActor *thing, int id,
-							BOOL reverse);
+bool EV_SilentLineTeleport (line_t *line, int side, AActor *thing, int id,
+							bool reverse);
 
 //
 // [RH] ACS (see also p_acs.h)
@@ -1017,7 +1017,7 @@ void P_DoDeferedScripts (void);
 //
 // [RH] p_quake.c
 //
-BOOL P_StartQuake (int tid, int intensity, int duration, int damrad, int tremrad);
+bool P_StartQuake (int tid, int intensity, int duration, int damrad, int tremrad);
 
 // [AM] Trigger actor specials.
 bool A_TriggerAction(AActor *mo, AActor *triggerer, int activationType);

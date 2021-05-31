@@ -41,7 +41,7 @@ void HU_Init();
 void STACK_ARGS HU_Shutdown();
 
 void HU_Ticker();
-BOOL HU_Responder (event_t* ev);
+bool HU_Responder (event_t* ev);
 void HU_Drawer (void);
 
 enum chatmode_t
@@ -65,5 +65,3 @@ class player_s;
 void HU_DrawScores (player_s *me);
 void HU_DisplayTimer (int x, int y, bool scale = true);
 #endif
-
-
