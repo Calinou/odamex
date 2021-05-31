@@ -29,6 +29,9 @@
 // Standard libc/STL includes we use in countless places
 #include <string>
 
+// Portable <stdint.h>
+#include "pstdint.h"
+
 #include "version.h"
 #include "errors.h"
 
@@ -64,28 +67,9 @@ typedef unsigned char byte;
 	#include <float.h>
 #endif
 
-#if defined(__GNUC__) && !defined(OSF1)
-	#define __int64 long long
-#endif
-
-#ifdef OSF1
-	#define __int64 long
-#endif
-
 #if (defined _XBOX || defined _MSC_VER)
-	typedef signed __int8 int8_t;
-	typedef signed __int16 int16_t;
-	typedef signed __int32 int32_t;
-	typedef signed __int64 int64_t;
-	typedef unsigned __int8 uint8_t;
-	typedef unsigned __int16 uint16_t;
-	typedef unsigned __int32 uint32_t;
-	typedef unsigned __int64 uint64_t;
-
 	#define PRI_SIZE_PREFIX "I"
 #else
-	#include <stdint.h>
-
 	#define PRI_SIZE_PREFIX "z"
 #endif
 
