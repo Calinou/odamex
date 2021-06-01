@@ -105,9 +105,6 @@ typedef unsigned long		DWORD;
 typedef signed long			SDWORD;
 #endif
 
-typedef unsigned __int64	QWORD;
-typedef signed __int64		SQWORD;
-
 typedef DWORD				BITFIELD;
 
 typedef uint64_t			dtime_t;

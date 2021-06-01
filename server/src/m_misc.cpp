@@ -152,7 +152,7 @@ bool M_ReadJSON(Json::Value &json, const char* filename)
 	byte* buffer = NULL;
 	std::string data;
 	Json::Reader reader;
-	QWORD length;
+	uint64_t length;
 
 	if (!(M_FileExists(filename)))
 		return false;

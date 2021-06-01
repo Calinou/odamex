@@ -49,7 +49,7 @@
 
 #if 0
 #define SWAP_QWORD(x)		{ x = (((x)>>56) | (((x)>>40)&(0xff<<8)) | (((x)>>24)&(0xff<<16)) | (((x)>>8)&(0xff<<24)) |\
-								   (((x)<<8)&(QWORD)0xff00000000) | (((x)<<24)&(QWORD)0xff0000000000) | (((x)<<40)&(QWORD)0xff000000000000) | ((x)<<56))); }
+								   (((x)<<8)&(uint64_t)0xff00000000) | (((x)<<24)&(uint64_t)0xff0000000000) | (((x)<<40)&(uint64_t)0xff000000000000) | ((x)<<56))); }
 #else
 #define SWAP_QWORD(x)		{ DWORD *y = (DWORD *)&x; DWORD t=y[0]; y[0]=y[1]; y[1]=t; SWAP_DWORD(y[0]); SWAP_DWORD(y[1]); }
 #endif
@@ -680,16 +680,16 @@ FArchive &FArchive::operator>> (DWORD &w)
 	return *this;
 }
 
-FArchive &FArchive::operator<< (QWORD w)
+FArchive &FArchive::operator<< (uint64_t w)
 {
 	SWAP_QWORD(w);
-	Write (&w, sizeof(QWORD));
+	Write (&w, sizeof(uint64_t));
 	return *this;
 }
 
-FArchive &FArchive::operator>> (QWORD &w)
+FArchive &FArchive::operator>> (uint64_t &w)
 {
-	Read (&w, sizeof(QWORD));
+	Read (&w, sizeof(uint64_t));
 	SWAP_QWORD(w);
 	return *this;
 }

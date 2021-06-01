@@ -49,7 +49,7 @@ private:
 	size_t next_index;
 	size_t size;
 	maplist_status_t status;
-	QWORD timeout;
+	uint64_t timeout;
 	byte valid_indexes;
 	void check_complete(void);
 	void invalidate(void);
