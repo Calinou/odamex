@@ -150,18 +150,18 @@ std::string M_GetCWD()
 // M_FileLength
 //
 // Returns the length of a file using an open descriptor
-SDWORD M_FileLength (FILE *f)
+ptrdiff_t M_FileLength(FILE* f)
 {
-	SDWORD CurrentPosition = -1;
-	SDWORD FileSize = -1;
+	long CurrentPosition = -1;
+	long FileSize = -1;
 
-    if (f != NULL)
-    {
-        CurrentPosition = ftell (f);
-        fseek (f, 0, SEEK_END);
-        FileSize = ftell (f);
-        fseek (f, CurrentPosition, SEEK_SET);
-    }
+	if (f != NULL)
+	{
+		CurrentPosition = ftell(f);
+		fseek(f, 0, SEEK_END);
+		FileSize = ftell(f);
+		fseek(f, CurrentPosition, SEEK_SET);
+	}
 
 	return FileSize;
 }
@@ -211,10 +211,10 @@ bool M_FileExistsExt(const std::string& filename, const char* ext)
 //
 // Writes a buffer to a new file, if it already exists, the file will be
 // erased and recreated with the new contents
-bool M_WriteFile(std::string filename, void *source, QWORD length)
+bool M_WriteFile(const std::string& filename, void *source, size_t length)
 {
     FILE *handle;
-    QWORD count;
+    size_t count;
 
     handle = fopen(filename.c_str(), "wb");
 
@@ -242,34 +242,34 @@ bool M_WriteFile(std::string filename, void *source, QWORD length)
 //
 // Reads a file, it will allocate storage via Z_Malloc for it and return
 // the buffer and the size.
-QWORD M_ReadFile(std::string filename, BYTE **buffer)
+size_t M_ReadFile(const std::string& filename, byte** buffer)
 {
-    FILE *handle;
-    QWORD count, length;
-    BYTE *buf;
-
-    handle = fopen(filename.c_str(), "rb");
-
+	FILE* handle = fopen(filename.c_str(), "rb");
 	if (handle == NULL)
 	{
-		Printf(PRINT_HIGH, "Could not open file %s for reading\n", filename.c_str());
+		Printf(PRINT_WARNING, "Could not open file %s for reading\n", filename.c_str());
 		return false;
 	}
 
-    length = M_FileLength(handle);
+	ptrdiff_t length = M_FileLength(handle);
+	if (length < 0)
+	{
+		Printf(PRINT_WARNING, "Could not obtain length of file %s\n", filename.c_str());
+		return false;
+	}
 
-    buf = (BYTE *)Z_Malloc (length, PU_STATIC, NULL);
-    count = fread(buf, 1, length, handle);
-    fclose (handle);
+	byte* buf = (byte*)Z_Malloc(length, PU_STATIC, NULL);
+	size_t count = fread(buf, 1, length, handle);
+	fclose(handle);
 
-    if (count != length)
+	if (count != length)
 	{
 		Printf(PRINT_HIGH, "Failed while reading from file %s\n", filename.c_str());
 		return false;
 	}
 
-    *buffer = buf;
-    return length;
+	*buffer = buf;
+	return length;
 }
 
 //
