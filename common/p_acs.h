@@ -15,22 +15,22 @@ struct ScriptPtr
 	WORD Number;
 	BYTE Type;
 	BYTE ArgCount;
-	DWORD Address;
+	uint32_t Address;
 };
 
 struct ScriptPtr1
 {
 	WORD Number;
 	WORD Type;
-	DWORD Address;
-	DWORD ArgCount;
+	uint32_t Address;
+	uint32_t ArgCount;
 };
 
 struct ScriptPtr2
 {
-	DWORD Number;	// Type is Number / 1000
-	DWORD Address;
-	DWORD ArgCount;
+	uint32_t Number;	// Type is Number / 1000
+	uint32_t Address;
+	uint32_t ArgCount;
 };
 
 struct ScriptFunction
@@ -39,7 +39,7 @@ struct ScriptFunction
 	BYTE LocalCount;
 	BYTE HasReturnValue;
 	BYTE Pad;
-	DWORD Address;
+	uint32_t Address;
 };
 
 enum
@@ -66,15 +66,15 @@ public:
 	~FBehavior ();
 
 	bool IsGood ();
-	BYTE *FindChunk (DWORD id) const;
+	BYTE *FindChunk (uint32_t id) const;
 	BYTE *NextChunk (BYTE *chunk) const;
 	int *FindScript (int number) const;
-	void PrepLocale (DWORD userpref, DWORD userdef, DWORD syspref, DWORD sysdef);
-	const char *LookupString (DWORD index, DWORD ofs=0) const;
-	const char *LocalizeString (DWORD index) const;
+	void PrepLocale (uint32_t userpref, uint32_t userdef, uint32_t syspref, uint32_t sysdef);
+	const char *LookupString (uint32_t index, uint32_t ofs=0) const;
+	const char *LocalizeString (uint32_t index) const;
 	void StartTypedScripts (WORD type, AActor *activator, int arg0=0, int arg1=0, int arg2=0, bool always = true) const;
-	DWORD PC2Ofs (int *pc) const { return (BYTE *)pc - Data; }
-	int *Ofs2PC (DWORD ofs) const { return (int *)(Data + ofs); }
+	uint32_t PC2Ofs (int *pc) const { return (BYTE *)pc - Data; }
+	int *Ofs2PC (uint32_t ofs) const { return (int *)(Data + ofs); }
 	ACSFormat GetFormat() const { return Format; }
 	ScriptFunction *GetFunction (int funcnum) const;
 	int GetArrayVal (int arraynum, int index) const;
@@ -94,13 +94,13 @@ private:
 	int NumFunctions;
 	ArrayInfo *Arrays;
 	int NumArrays;
-	DWORD LanguageNeutral;
-	DWORD Localized;
+	uint32_t LanguageNeutral;
+	uint32_t Localized;
 
 	static int STACK_ARGS SortScripts (const void *a, const void *b);
-	void AddLanguage (DWORD lang);
-	DWORD FindLanguage (DWORD lang, bool ignoreregion) const;
-	DWORD *CheckIfInList (DWORD lang);
+	void AddLanguage (uint32_t lang);
+	uint32_t FindLanguage (uint32_t lang, bool ignoreregion) const;
+	uint32_t *CheckIfInList (uint32_t lang);
 };
 
 class DLevelScript : public DObject
@@ -568,4 +568,3 @@ FArchive &operator<< (FArchive &arc, acsdefered_s *defer);
 FArchive &operator>> (FArchive &arc, acsdefered_s* &defer);
 
 #endif //__P_ACS_H__
-

@@ -336,7 +336,7 @@ enum EMIType
 struct MapInfoHandler
 {
     EMIType type;
-    DWORD data1, data2;
+    uint32_t data1, data2;
 };
 
 static const char *MapInfoTopLevel[] =
@@ -722,7 +722,7 @@ static void SkipUnknownBlock()
 // done by passing in a strings pointer, and leaving the others NULL.
 //
 static void ParseMapInfoLower(
-	MapInfoHandler* handlers, const char** strings, tagged_info_t* tinfo, DWORD flags
+	MapInfoHandler* handlers, const char** strings, tagged_info_t* tinfo, uint32_t flags
 )
 {
 	// 0 if old mapinfo, positive number if new MAPINFO, the exact
@@ -1110,7 +1110,7 @@ static void ParseMapInfoLump(int lump, const char* lumpname)
 	ClusterInfos& clusters = getClusterInfos();
 
 	level_pwad_info_t defaultinfo;
-	DWORD levelflags;
+	uint32_t levelflags;
 
 	SetLevelDefaults (&defaultinfo);
 	SC_OpenLumpNum (lump, lumpname);

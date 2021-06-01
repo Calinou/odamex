@@ -296,7 +296,7 @@ EXTERN_CVAR (cl_splitnetdemos)
 void CL_PlayerTimes (void);
 void CL_GetServerSettings(void);
 void CL_RequestDownload(std::string filename, std::string filehash = "");
-void CL_TryToConnect(DWORD server_token);
+void CL_TryToConnect(uint32_t server_token);
 void CL_Decompress(int sequence);
 
 void CL_LocalDemoTic(void);
@@ -1755,7 +1755,7 @@ bool CL_PrepareConnect(void)
 
 	cvar_t::C_BackupCVars(CVAR_SERVERINFO);
 
-	DWORD server_token = MSG_ReadLong();
+	uint32_t server_token = MSG_ReadLong();
 	server_host = MSG_ReadString();
 
 	bool recv_teamplay_stats = 0;
@@ -2020,7 +2020,7 @@ void CL_InitNetwork (void)
     connected = false;
 }
 
-void CL_TryToConnect(DWORD server_token)
+void CL_TryToConnect(uint32_t server_token)
 {
 	if (!serveraddr.ip[0])
 		return;
@@ -3413,7 +3413,7 @@ void CL_Actor_Movedir()
 {
 	AActor* actor = P_FindThingById(MSG_ReadUnVarint());
 	BYTE movedir = MSG_ReadByte();
-    SDWORD movecount = MSG_ReadLong();
+    int32_t movecount = MSG_ReadLong();
 
 	if (!actor || movedir >= 8)
 		return;

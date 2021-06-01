@@ -94,7 +94,7 @@ struct level_info_t {
 	int				partime;
 	char			skypic[9];
 	char			music[9];
-	DWORD			flags;
+	uint32_t			flags;
 	int				cluster;
 	FLZOMemFile*	snapshot;
 	acsdefered_s*	defered;
@@ -117,7 +117,7 @@ struct level_pwad_info_t
 	int				partime;
 	char			skypic[9];
 	char			music[9];
-	DWORD			flags;
+	uint32_t			flags;
 	int				cluster;
 	FLZOMemFile*	snapshot;
 	acsdefered_s*	defered;
@@ -158,7 +158,7 @@ struct level_locals_t {
 	char			nextmap[8];				// go here when sv_fraglimit is hit
 	char			secretmap[8];			// map to go to when used secret exit
 
-	DWORD			flags;
+	uint32_t			flags;
 
 	// [SL] use 4 bytes for color types instead of argb_t so that the struct
 	// can consist of only plain-old-data types. It is also important to have
@@ -188,7 +188,7 @@ struct level_locals_t {
 
 	// The following are all used for ACS scripting
 	FBehavior*		behavior;
-	SDWORD			vars[NUM_MAPVARS];
+	int32_t			vars[NUM_MAPVARS];
 };
 
 #define CLUSTER_HUB            0x00000001u

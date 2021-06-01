@@ -803,9 +803,9 @@ void AActor::Serialize (FArchive &arc)
 
 		// NOTE(jsd): This is pretty awful right here:
 		if (translation)
-			arc << (DWORD)(translation.getTable() - translationtables);
+			arc << (uint32_t)(translation.getTable() - translationtables);
 		else
-			arc << (DWORD)0xffffffff;
+			arc << (uint32_t)0xffffffff;
 		spawnpoint.Serialize (arc);
 	}
 	else
@@ -872,9 +872,9 @@ void AActor::Serialize (FArchive &arc)
 
 		P_SetThingId(this, newnetid);
 
-		DWORD trans;
+		uint32_t trans;
 		arc >> trans;
-		if (trans == (DWORD)0xffffffff)
+		if (trans == (uint32_t)0xffffffff)
 			translation = translationref_t();
 		else
 		{

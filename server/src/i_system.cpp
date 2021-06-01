@@ -85,7 +85,7 @@ const size_t min_heapsize = 8;
 // The size we got back from I_ZoneBase in megabytes
 size_t got_heapsize = 0;
 
-DWORD LanguageIDs[4];
+uint32_t LanguageIDs[4];
 
 //
 // I_MegabytesToBytes

@@ -358,7 +358,7 @@ public:
 	fixed_t		pitch;
 	angle_t		prevpitch;
 
-	DWORD			effects;			// [RH] see p_effect.h
+	uint32_t			effects;			// [RH] see p_effect.h
 
     // Interaction info, by BLOCKMAP.
     // Links in blocks (if needed).

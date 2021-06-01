@@ -68,7 +68,7 @@
 			*/
 	#    if (defined(_Windows) || defined(_WINDOWS) || defined(_WINDOWS_)) && \
 			(!defined(INT_MAX) || INT_MAX <= 0x7ffffffeL)
-			typedef DWORD         png_alloc_size_t;
+			typedef uint32_t         png_alloc_size_t;
 	#    else
 			typedef png_size_t    png_alloc_size_t;
 	#    endif

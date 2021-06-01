@@ -26,6 +26,6 @@
 #include "version.h"
 #include "doomtype.h"
 
-DWORD SV_QryParseEnquiry(const DWORD &Tag);
+uint32_t SV_QryParseEnquiry(const uint32_t &Tag);
 
 #endif // __SV_SQP_H__

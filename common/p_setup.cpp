@@ -1119,7 +1119,7 @@ static void AddBlockLine
 	int *count,
 	int *done,
 	int blockno,
-	DWORD lineno
+	uint32_t lineno
 )
 {
 	linelist_t *l;
@@ -1151,7 +1151,7 @@ void P_CreateBlockMap()
 	int *blockcount=NULL;			// array of counters of line lists
 	int *blockdone=NULL;			// array keeping track of blocks/line
 	int NBlocks;					// number of cells = nrows*ncols
-	DWORD linetotal=0;				// total length of all blocklists
+	uint32_t linetotal=0;				// total length of all blocklists
 	int i,j;
 	int map_minx=INT32_MAX;			// init for map limits search
 	int map_miny=INT32_MAX;
@@ -1388,7 +1388,7 @@ void P_CreateBlockMap()
 	for (i = 0; i < NBlocks; i++)
 	{
 		linelist_t *bl = blocklists[i];
-		DWORD offs = blockmaplump[4+i] =   // set offset to block's list
+		uint32_t offs = blockmaplump[4+i] =   // set offset to block's list
 			(i? blockmaplump[4+i-1] : 4+NBlocks) + (i? blockcount[i-1] : 0);
 
 		// add the lines in each block's list to the blockmaplump
@@ -1436,13 +1436,13 @@ void P_LoadBlockMap (int lump)
 
 		blockmaplump[0] = LESHORT(wadblockmaplump[0]);
 		blockmaplump[1] = LESHORT(wadblockmaplump[1]);
-		blockmaplump[2] = (DWORD)(LESHORT(wadblockmaplump[2])) & 0xffff;
-		blockmaplump[3] = (DWORD)(LESHORT(wadblockmaplump[3])) & 0xffff;
+		blockmaplump[2] = (uint32_t)(LESHORT(wadblockmaplump[2])) & 0xffff;
+		blockmaplump[3] = (uint32_t)(LESHORT(wadblockmaplump[3])) & 0xffff;
 
 		for (i=4 ; i<count ; i++)
 		{
 			short t = LESHORT(wadblockmaplump[i]);          // killough 3/1/98
-			blockmaplump[i] = t == -1 ? (DWORD)0xffffffff : (DWORD) t & 0xffff;
+			blockmaplump[i] = t == -1 ? (uint32_t)0xffffffff : (uint32_t) t & 0xffff;
 		}
 
 		Z_Free (wadblockmaplump);

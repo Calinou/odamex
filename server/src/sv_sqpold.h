@@ -27,6 +27,6 @@
 #define __SV_SQPOLD_H__
 
 void SV_SendServerInfo ();
-bool SV_IsValidToken(DWORD token);
+bool SV_IsValidToken(uint32_t token);
 
 #endif // __SV_SQPOLD_H__

@@ -194,7 +194,7 @@ public:
 	static void BeginFrame ();
 	static void EndFrame ();
 
-	DWORD ObjectFlags;
+	uint32_t ObjectFlags;
 
 	static void STACK_ARGS StaticShutdown ();
 
@@ -212,5 +212,3 @@ private:
 #include "farchive.h"
 
 #endif //__DOBJECT_H__
-
-

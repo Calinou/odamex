@@ -1078,7 +1078,7 @@ void NetDemo::writeLauncherSequence(buf_t *netbuffer)
 		}
 	}
 	
-	MSG_WriteLong(netbuffer, (DWORD)0x01020304);
+	MSG_WriteLong(netbuffer, (uint32_t)0x01020304);
 	MSG_WriteShort(netbuffer, sv_maxplayers);
     
 	for (Players::iterator it = players.begin();it != players.end();++it)
@@ -1087,7 +1087,7 @@ void NetDemo::writeLauncherSequence(buf_t *netbuffer)
 			MSG_WriteBool(netbuffer, it->spectator);
 	}
 	
-	MSG_WriteLong	(netbuffer, (DWORD)0x01020305);
+	MSG_WriteLong	(netbuffer, (uint32_t)0x01020305);
 	MSG_WriteShort	(netbuffer, 0);	// join_passowrd
 
 	MSG_WriteLong	(netbuffer, GAMEVER);
