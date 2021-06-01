@@ -53,8 +53,6 @@
 	#define NORETURN __attribute__ ((noreturn))
 #endif
 
-typedef unsigned char byte;
-
 #if defined(_MSC_VER) || defined(__WATCOMC__)
 	#define STACK_ARGS __cdecl
 #else
@@ -90,8 +88,7 @@ typedef unsigned char byte;
 #define MINFIXED		(signed)(0x80000000)
 #define MAXFIXED		(signed)(0x7fffffff)
 
-typedef unsigned char		byte;
-
+typedef unsigned char byte;
 typedef uint32_t BITFIELD;
 typedef uint64_t dtime_t;
 
