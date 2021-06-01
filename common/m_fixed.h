@@ -86,8 +86,8 @@ inline static fixed_t FixedMul(fixed_t a, fixed_t b)
 //
 inline static fixed_t FixedDiv(fixed_t a, fixed_t b)
 {
-	return (abs(a) >> 14) >= abs(b) ? ((a ^ b) >> 31) ^ MAXINT :
-		(fixed_t)(((int64_t)a << FRACBITS) / b);
+	return (abs(a) >> 14) >= abs(b) ? ((a ^ b) >> 31) ^ INT32_MAX
+	                                : (fixed_t)(((int64_t)a << FRACBITS) / b);
 }
 
 //

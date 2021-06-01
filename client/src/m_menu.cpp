@@ -2133,7 +2133,7 @@ void M_Init (void)
 // M_FindCvarInMenu
 //
 // Takes an array of menu items and returns the index in the array of the
-// menu item containing that cvar.  Returns MAXINT if not found.
+// menu item containing that cvar.  Returns INT32_MAX if not found.
 //
 size_t M_FindCvarInMenu(cvar_t &cvar, menuitem_t *menu, size_t length)
 {
@@ -2146,7 +2146,7 @@ size_t M_FindCvarInMenu(cvar_t &cvar, menuitem_t *menu, size_t length)
     	}
 	}
 
-    return MAXINT;    // indicate not found
+    return INT32_MAX;    // indicate not found
 }
 
 
