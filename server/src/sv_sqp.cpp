@@ -126,7 +126,7 @@ next:
 	}
 
 	// Cvar count
-	MSG_WriteByte(&ml_message, (BYTE)Cvars.size());
+	MSG_WriteByte(&ml_message, (byte)Cvars.size());
 
 	// Write cvars
 	for(size_t i = 0; i < Cvars.size(); ++i)
@@ -269,8 +269,8 @@ next:
 // Sends information regarding the type of information we received (ie: it will
 // send data that is wanted by the enquirer program)
 static uint32_t IntQrySendResponse(const uint16_t& TagId,
-                                const BYTE& TagApplication,
-                                const BYTE& TagQRId,
+                                const byte& TagApplication,
+                                const byte& TagQRId,
                                 const uint16_t& TagPacketType)
 {
 	// It isn't a query, throw it away
@@ -317,8 +317,8 @@ static uint32_t IntQrySendResponse(const uint16_t& TagId,
 
 	uint32_t ReTag = 0;
 	uint16_t ReId = TAG_ID;
-	BYTE ReApplication = 3;
-	BYTE ReQRId = 2;
+	byte ReApplication = 3;
+	byte ReQRId = 2;
 	uint16_t RePacketType = 0;
 
 	switch(TagPacketType)
@@ -412,8 +412,8 @@ uint32_t SV_QryParseEnquiry(const uint32_t& Tag)
 	// Decode the tag into its fields
 	// TODO: this may not be 100% correct
 	uint16_t TagId = ((Tag >> 20) & 0x0FFF);
-	BYTE TagApplication = ((Tag >> 16) & 0x0F);
-	BYTE TagQRId = ((Tag >> 12) & 0x0F);
+	byte TagApplication = ((Tag >> 16) & 0x0F);
+	byte TagQRId = ((Tag >> 12) & 0x0F);
 	uint16_t TagPacketType = (Tag & 0xFFFF0FFF);
 
 	// It is not ours

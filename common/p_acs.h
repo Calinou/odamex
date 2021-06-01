@@ -13,8 +13,8 @@
 struct ScriptPtr
 {
 	uint16_t Number;
-	BYTE Type;
-	BYTE ArgCount;
+	byte Type;
+	byte ArgCount;
 	uint32_t Address;
 };
 
@@ -35,10 +35,10 @@ struct ScriptPtr2
 
 struct ScriptFunction
 {
-	BYTE ArgCount;
-	BYTE LocalCount;
-	BYTE HasReturnValue;
-	BYTE Pad;
+	byte ArgCount;
+	byte LocalCount;
+	byte HasReturnValue;
+	byte Pad;
 	uint32_t Address;
 };
 
@@ -62,18 +62,18 @@ enum ACSFormat { ACS_Old, ACS_Enhanced, ACS_LittleEnhanced, ACS_Unknown };
 class FBehavior
 {
 public:
-	FBehavior (BYTE *object, int len);
+	FBehavior (byte *object, int len);
 	~FBehavior ();
 
 	bool IsGood ();
-	BYTE *FindChunk (uint32_t id) const;
-	BYTE *NextChunk (BYTE *chunk) const;
+	byte *FindChunk (uint32_t id) const;
+	byte *NextChunk (byte *chunk) const;
 	int *FindScript (int number) const;
 	void PrepLocale (uint32_t userpref, uint32_t userdef, uint32_t syspref, uint32_t sysdef);
 	const char *LookupString (uint32_t index, uint32_t ofs=0) const;
 	const char *LocalizeString (uint32_t index) const;
 	void StartTypedScripts (uint16_t type, AActor *activator, int arg0=0, int arg1=0, int arg2=0, bool always = true) const;
-	uint32_t PC2Ofs (int *pc) const { return (BYTE *)pc - Data; }
+	uint32_t PC2Ofs (int *pc) const { return (byte *)pc - Data; }
 	int *Ofs2PC (uint32_t ofs) const { return (int *)(Data + ofs); }
 	ACSFormat GetFormat() const { return Format; }
 	ScriptFunction *GetFunction (int funcnum) const;
@@ -85,12 +85,12 @@ private:
 
 	ACSFormat Format;
 
-	BYTE *Data;
+	byte *Data;
 	int DataSize;
-	BYTE *Chunks;
-	BYTE *Scripts;
+	byte *Chunks;
+	byte *Scripts;
 	int NumScripts;
-	BYTE *Functions;
+	byte *Functions;
 	int NumFunctions;
 	ArrayInfo *Arrays;
 	int NumArrays;
@@ -517,11 +517,11 @@ private:
 
 inline FArchive &operator<< (FArchive &arc, DLevelScript::EScriptState state)
 {
-	return arc << (BYTE)state;
+	return arc << (byte)state;
 }
 inline FArchive &operator>> (FArchive &arc, DLevelScript::EScriptState &state)
 {
-	BYTE in; arc >> in; state = (DLevelScript::EScriptState)in; return arc;
+	byte in; arc >> in; state = (DLevelScript::EScriptState)in; return arc;
 }
 
 class DACSThinker : public DThinker

@@ -3412,7 +3412,7 @@ void CL_ForceSetTeam (void)
 void CL_Actor_Movedir()
 {
 	AActor* actor = P_FindThingById(MSG_ReadUnVarint());
-	BYTE movedir = MSG_ReadByte();
+	byte movedir = MSG_ReadByte();
     int32_t movecount = MSG_ReadLong();
 
 	if (!actor || movedir >= 8)

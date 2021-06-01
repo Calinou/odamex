@@ -1466,7 +1466,7 @@ void NetDemo::writeSnapshotData(std::vector<byte>& buf)
 
 	// write map info
 	arc << level.mapname;
-	arc << (BYTE)(gamestate == GS_INTERMISSION);
+	arc << (byte)(gamestate == GS_INTERMISSION);
 
 	G_SerializeSnapshots(arc);
 	P_SerializeRNGState(arc);

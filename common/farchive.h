@@ -154,7 +154,7 @@ public:
 	void WriteCount(uint32_t count);
 	uint32_t ReadCount();
 
-	FArchive& operator<< (BYTE c);
+	FArchive& operator<< (byte c);
 	FArchive& operator<< (uint16_t s);
 	FArchive& operator<< (uint32_t i);
 	FArchive& operator<< (uint64_t i);
@@ -164,16 +164,16 @@ public:
 	FArchive& operator<< (const char* str);
 	FArchive& operator<< (DObject* obj);
 
-	inline	FArchive& operator<< (char c) { return operator<< ((BYTE)c); }
-	inline	FArchive& operator<< (SBYTE c) { return operator<< ((BYTE)c); }
+	inline	FArchive& operator<< (char c) { return operator<< ((byte)c); }
+	inline	FArchive& operator<< (int8_t c) { return operator<< ((byte)c); }
 	inline	FArchive& operator<< (int16_t s) { return operator<< ((uint16_t)s); }
 	inline	FArchive& operator<< (int32_t i) { return operator<< ((uint32_t)i); }
 	inline	FArchive& operator<< (int64_t i) { return operator<< ((uint64_t)i); }
 	inline	FArchive& operator<< (const unsigned char* str) { return operator<< ((const char* )str); }
 	inline	FArchive& operator<< (const signed char* str) { return operator<< ((const char* )str); }
-	inline	FArchive& operator<< (bool b) { return operator<< ((BYTE)b); }
+	inline	FArchive& operator<< (bool b) { return operator<< ((byte)b); }
 
-	FArchive& operator>> (BYTE& c);
+	FArchive& operator>> (byte& c);
 	FArchive& operator>> (uint16_t& s);
 	FArchive& operator>> (uint32_t& i);
 	FArchive& operator>> (uint64_t& i);
@@ -183,14 +183,14 @@ public:
 	FArchive& operator>> (std::string& s);
 	FArchive& ReadObject(DObject *&obj, TypeInfo* wanttype);
 
-	inline	FArchive& operator>> (char& c) { BYTE in; operator>> (in); c = (char)in; return *this; }
-	inline	FArchive& operator>> (SBYTE& c) { BYTE in; operator>> (in); c = (SBYTE)in; return *this; }
+	inline	FArchive& operator>> (char& c) { byte in; operator>> (in); c = (char)in; return *this; }
+	inline	FArchive& operator>> (int8_t& c) { byte in; operator>> (in); c = (int8_t)in; return *this; }
 	inline	FArchive& operator>> (int16_t& s) { uint16_t in; operator>> (in); s = (int16_t)in; return *this; }
 	inline	FArchive& operator>> (int32_t& i) { uint32_t in; operator>> (in); i = (int32_t)in; return *this; }
 	inline	FArchive& operator>> (int64_t& i) { uint64_t in; operator>> (in); i = (int64_t)in; return *this; }
 	//inline	FArchive& operator>> (unsigned char *&str) { return operator>> ((char *&)str); }
 	//inline	FArchive& operator>> (signed char *&str) { return operator>> ((char *&)str); }
-	inline	FArchive& operator>> (bool& b) { BYTE in; operator>> (in); b = (in != 0); return *this; }
+	inline	FArchive& operator>> (bool& b) { byte in; operator>> (in); b = (in != 0); return *this; }
 	inline  FArchive& operator>> (DObject* &object) { return ReadObject (object, RUNTIME_CLASS(DObject)); }
 
 protected:

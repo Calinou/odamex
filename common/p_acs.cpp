@@ -47,8 +47,8 @@ struct CallReturn
 {
 	int ReturnAddress;
 	ScriptFunction *ReturnFunction;
-	BYTE bDiscardResult;
-	BYTE Pad[3];
+	byte bDiscardResult;
+	byte Pad[3];
 };
 
 static int Stack[STACK_SIZE];
@@ -566,7 +566,7 @@ EXTERN_CVAR (sv_gametype)
 
 //---- ACS lump manager ----//
 
-FBehavior::FBehavior (BYTE *object, int len)
+FBehavior::FBehavior (byte *object, int len)
 {
 	int i;
 
@@ -613,7 +613,7 @@ FBehavior::FBehavior (BYTE *object, int len)
 			(((uint32_t *)Scripts)[-1] == MAKE_ID('A','C','S','e') ||
 			((uint32_t *)Scripts)[-1] == MAKE_ID('A','C','S','E')))
 		{
-			Format = (((BYTE *)Scripts)[-1] == 'e') ? ACS_LittleEnhanced : ACS_Enhanced;
+			Format = (((byte *)Scripts)[-1] == 'e') ? ACS_LittleEnhanced : ACS_Enhanced;
 			Chunks = object + ((uint32_t *)Scripts)[-2];
 			// Forget about the compatibility cruft at the end of the lump
 			DataSize = ((uint32_t *)object)[1] - 8;
@@ -727,7 +727,7 @@ FBehavior::FBehavior (BYTE *object, int len)
 					elems[i] = LELONG(chunk[3+i]);
 				}
 			}
-			chunk = (uint32_t *)NextChunk((BYTE *)chunk);
+			chunk = (uint32_t *)NextChunk((byte *)chunk);
 		}
 	}
 
@@ -801,9 +801,9 @@ void FBehavior::SetArrayVal (int arraynum, int index, int value)
 	array->Elements[index] = value;
 }
 
-BYTE *FBehavior::FindChunk (uint32_t id) const
+byte *FBehavior::FindChunk (uint32_t id) const
 {
-	BYTE *chunk = Chunks;
+	byte *chunk = Chunks;
 
 	while (chunk != NULL && chunk < Data + DataSize)
 	{
@@ -816,7 +816,7 @@ BYTE *FBehavior::FindChunk (uint32_t id) const
 	return NULL;
 }
 
-BYTE *FBehavior::NextChunk (BYTE *chunk) const
+byte *FBehavior::NextChunk (byte *chunk) const
 {
 	uint32_t id = *(uint32_t *)chunk;
 	chunk += ((uint32_t *)chunk)[1] + 8;
@@ -882,7 +882,7 @@ const char *FBehavior::LocalizeString (uint32_t index) const
 
 void FBehavior::PrepLocale (uint32_t userpref, uint32_t userdef, uint32_t syspref, uint32_t sysdef)
 {
-	BYTE *chunk;
+	byte *chunk;
 	uint32_t *list;
 
 	// Clear away any existing links
@@ -920,7 +920,7 @@ void FBehavior::AddLanguage (uint32_t langid)
 {
 	uint32_t ofs, *ofsput;
 	uint32_t *list;
-	BYTE *chunk;
+	byte *chunk;
 
 	// First, make sure language is not already inserted
 	ofsput = CheckIfInList (langid);
@@ -977,7 +977,7 @@ uint32_t *FBehavior::CheckIfInList (uint32_t langid)
 
 uint32_t FBehavior::FindLanguage (uint32_t langid, bool ignoreregion) const
 {
-	BYTE *chunk;
+	byte *chunk;
 	uint32_t *list;
 	uint32_t langmask;
 
@@ -2057,8 +2057,8 @@ void DLevelScript::DoFadeRange(AActor* who, int r1, int g1, int b1, int a1,
 
 inline int getbyte (int *&pc)
 {
-	int res = *(BYTE *)pc;
-	pc = (int *)((BYTE *)pc+1);
+	int res = *(byte *)pc;
+	pc = (int *)((byte *)pc+1);
 	return res;
 }
 
@@ -2165,50 +2165,50 @@ void DLevelScript::RunScript ()
 			break;
 
 		case PCD_PUSHBYTE:
-			PushToStack(*(BYTE*)pc);
-			pc = (int*)((BYTE*)pc + 1);
+			PushToStack(*(byte*)pc);
+			pc = (int*)((byte*)pc + 1);
 			break;
 
 		case PCD_PUSH2BYTES:
-			Stack[sp] = ((BYTE*)pc)[0];
-			Stack[sp + 1] = ((BYTE*)pc)[1];
+			Stack[sp] = ((byte*)pc)[0];
+			Stack[sp + 1] = ((byte*)pc)[1];
 			sp += 2;
-			pc = (int*)((BYTE*)pc + 2);
+			pc = (int*)((byte*)pc + 2);
 			break;
 
 		case PCD_PUSH3BYTES:
-			Stack[sp] = ((BYTE*)pc)[0];
-			Stack[sp + 1] = ((BYTE*)pc)[1];
-			Stack[sp + 2] = ((BYTE*)pc)[2];
+			Stack[sp] = ((byte*)pc)[0];
+			Stack[sp + 1] = ((byte*)pc)[1];
+			Stack[sp + 2] = ((byte*)pc)[2];
 			sp += 3;
-			pc = (int*)((BYTE*)pc + 3);
+			pc = (int*)((byte*)pc + 3);
 			break;
 
 		case PCD_PUSH4BYTES:
-			Stack[sp] = ((BYTE*)pc)[0];
-			Stack[sp + 1] = ((BYTE*)pc)[1];
-			Stack[sp + 2] = ((BYTE*)pc)[2];
-			Stack[sp + 3] = ((BYTE*)pc)[3];
+			Stack[sp] = ((byte*)pc)[0];
+			Stack[sp + 1] = ((byte*)pc)[1];
+			Stack[sp + 2] = ((byte*)pc)[2];
+			Stack[sp + 3] = ((byte*)pc)[3];
 			sp += 4;
-			pc = (int*)((BYTE*)pc + 4);
+			pc = (int*)((byte*)pc + 4);
 			break;
 
 		case PCD_PUSH5BYTES:
-			Stack[sp] = ((BYTE*)pc)[0];
-			Stack[sp + 1] = ((BYTE*)pc)[1];
-			Stack[sp + 2] = ((BYTE*)pc)[2];
-			Stack[sp + 3] = ((BYTE*)pc)[3];
-			Stack[sp + 4] = ((BYTE*)pc)[4];
+			Stack[sp] = ((byte*)pc)[0];
+			Stack[sp + 1] = ((byte*)pc)[1];
+			Stack[sp + 2] = ((byte*)pc)[2];
+			Stack[sp + 3] = ((byte*)pc)[3];
+			Stack[sp + 4] = ((byte*)pc)[4];
 			sp += 5;
-			pc = (int*)((BYTE*)pc + 5);
+			pc = (int*)((byte*)pc + 5);
 			break;
 
 		case PCD_PUSHBYTES:
-			temp = *(BYTE*)pc;
-			pc = (int*)((BYTE*)pc + temp + 1);
+			temp = *(byte*)pc;
+			pc = (int*)((byte*)pc + temp + 1);
 			for (temp = -temp; temp; temp++)
 			{
-				PushToStack(*((BYTE*)pc + temp));
+				PushToStack(*((byte*)pc + temp));
 			}
 			break;
 
@@ -2289,35 +2289,35 @@ void DLevelScript::RunScript ()
 			break;
 
 		case PCD_LSPEC1DIRECTB:
-			ActivateLineSpecial(((BYTE *)pc)[0], activationline, activator,
-				((BYTE *)pc)[1], 0, 0, 0, 0);
-			pc = (int *)((BYTE *)pc + 2);
+			ActivateLineSpecial(((byte *)pc)[0], activationline, activator,
+				((byte *)pc)[1], 0, 0, 0, 0);
+			pc = (int *)((byte *)pc + 2);
 			break;
 
 		case PCD_LSPEC2DIRECTB:
-			ActivateLineSpecial(((BYTE *)pc)[0], activationline, activator,
-				((BYTE *)pc)[1], ((BYTE *)pc)[2], 0, 0, 0);
-			pc = (int *)((BYTE *)pc + 3);
+			ActivateLineSpecial(((byte *)pc)[0], activationline, activator,
+				((byte *)pc)[1], ((byte *)pc)[2], 0, 0, 0);
+			pc = (int *)((byte *)pc + 3);
 			break;
 
 		case PCD_LSPEC3DIRECTB:
-			ActivateLineSpecial(((BYTE *)pc)[0], activationline, activator,
-				((BYTE *)pc)[1], ((BYTE *)pc)[2], ((BYTE *)pc)[3], 0, 0);
-			pc = (int *)((BYTE *)pc + 4);
+			ActivateLineSpecial(((byte *)pc)[0], activationline, activator,
+				((byte *)pc)[1], ((byte *)pc)[2], ((byte *)pc)[3], 0, 0);
+			pc = (int *)((byte *)pc + 4);
 			break;
 
 		case PCD_LSPEC4DIRECTB:
-			ActivateLineSpecial(((BYTE *)pc)[0], activationline, activator,
-				((BYTE *)pc)[1], ((BYTE *)pc)[2], ((BYTE *)pc)[3],
-				((BYTE *)pc)[4], 0);
-			pc = (int *)((BYTE *)pc + 5);
+			ActivateLineSpecial(((byte *)pc)[0], activationline, activator,
+				((byte *)pc)[1], ((byte *)pc)[2], ((byte *)pc)[3],
+				((byte *)pc)[4], 0);
+			pc = (int *)((byte *)pc + 5);
 			break;
 
 		case PCD_LSPEC5DIRECTB:
-			ActivateLineSpecial(((BYTE *)pc)[0], activationline, activator,
-				((BYTE *)pc)[1], ((BYTE *)pc)[2], ((BYTE *)pc)[3],
-				((BYTE *)pc)[4], ((BYTE *)pc)[5]);
-			pc = (int *)((BYTE *)pc + 6);
+			ActivateLineSpecial(((byte *)pc)[0], activationline, activator,
+				((byte *)pc)[1], ((byte *)pc)[2], ((byte *)pc)[3],
+				((byte *)pc)[4], ((byte *)pc)[5]);
+			pc = (int *)((byte *)pc + 6);
 			break;
 
 		case PCD_CALL:
@@ -2802,8 +2802,8 @@ void DLevelScript::RunScript ()
 
 		case PCD_DELAYDIRECTB:
 			state = SCRIPT_Delayed;
-			statedata = *(BYTE *)pc;
-			pc = (int *)((BYTE *)pc + 1);
+			statedata = *(byte *)pc;
+			pc = (int *)((byte *)pc + 1);
 			break;
 
 		case PCD_RANDOM:
@@ -2817,8 +2817,8 @@ void DLevelScript::RunScript ()
 			break;
 
 		case PCD_RANDOMDIRECTB:
-			PushToStack (Random (((BYTE *)pc)[0], ((BYTE *)pc)[1]));
-			pc = (int *)((BYTE *)pc + 2);
+			PushToStack (Random (((byte *)pc)[0], ((byte *)pc)[1]));
+			pc = (int *)((byte *)pc + 2);
 			break;
 
 		case PCD_THINGCOUNT:
@@ -3936,19 +3936,19 @@ FArchive &operator<< (FArchive &arc, acsdefered_s *defer)
 {
 	while (defer)
 	{
-		arc << (BYTE)1;
-		arc << (BYTE)defer->type << defer->script
+		arc << (byte)1;
+		arc << (byte)defer->type << defer->script
 			<< defer->arg0 << defer->arg1 << defer->arg2;
 		defer = defer->next;
 	}
-	arc << (BYTE)0;
+	arc << (byte)0;
 	return arc;
 }
 
 FArchive &operator>> (FArchive &arc, acsdefered_s* &defertop)
 {
 	acsdefered_s **defer = &defertop;
-	BYTE inbyte;
+	byte inbyte;
 
 	arc >> inbyte;
 	while (inbyte)

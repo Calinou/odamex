@@ -242,11 +242,11 @@ enum ItemEquipVal
 
 inline FArchive &operator<< (FArchive &arc, card_t i)
 {
-	return arc << (BYTE)i;
+	return arc << (byte)i;
 }
 inline FArchive &operator>> (FArchive &arc, card_t &i)
 {
-	BYTE in; arc >> in; i = (card_t)in; return arc;
+	byte in; arc >> in; i = (card_t)in; return arc;
 }
 
 
@@ -273,11 +273,11 @@ enum weapontype_t
 
 inline FArchive &operator<< (FArchive &arc, weapontype_t i)
 {
-	return arc << (BYTE)i;
+	return arc << (byte)i;
 }
 inline FArchive &operator>> (FArchive &arc, weapontype_t &i)
 {
-	BYTE in; arc >> in; i = (weapontype_t)in; return arc;
+	byte in; arc >> in; i = (weapontype_t)in; return arc;
 }
 
 
@@ -295,11 +295,11 @@ enum ammotype_t
 
 inline FArchive &operator<< (FArchive &arc, ammotype_t i)
 {
-	return arc << (BYTE)i;
+	return arc << (byte)i;
 }
 inline FArchive &operator>> (FArchive &arc, ammotype_t &i)
 {
-	BYTE in; arc >> in; i = (ammotype_t)in; return arc;
+	byte in; arc >> in; i = (ammotype_t)in; return arc;
 }
 
 
@@ -317,11 +317,11 @@ enum powertype_t
 
 inline FArchive &operator<< (FArchive &arc, powertype_t i)
 {
-	return arc << (BYTE)i;
+	return arc << (byte)i;
 }
 inline FArchive &operator>> (FArchive &arc, powertype_t &i)
 {
-	BYTE in; arc >> in; i = (powertype_t)in; return arc;
+	byte in; arc >> in; i = (powertype_t)in; return arc;
 }
 
 

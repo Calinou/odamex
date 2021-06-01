@@ -57,12 +57,12 @@ void DThinker::SerializeAll (FArchive &arc, bool hubLoad)
 		{
 			if (!(arc.IsReset() && P_ThinkerIsPlayerType(thinker)))
 			{
-				arc << (BYTE)1;
+				arc << (byte)1;
 				arc << thinker;
 			}
 			thinker = thinker->m_Next;
 		}
-		arc << (BYTE)0;
+		arc << (byte)0;
 	}
 	else
 	{
@@ -71,7 +71,7 @@ void DThinker::SerializeAll (FArchive &arc, bool hubLoad)
 		else
 			DestroyAllThinkers ();
 
-		BYTE more;
+		byte more;
 		arc >> more;
 		while (more)
 		{

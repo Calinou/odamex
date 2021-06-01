@@ -64,11 +64,11 @@ void A_ForceWeaponFire(AActor *mo, weapontype_t weapon, int tic);
 
 inline FArchive &operator<< (FArchive &arc, psprnum_t i)
 {
-	return arc << (BYTE)i;
+	return arc << (byte)i;
 }
 inline FArchive &operator>> (FArchive &arc, psprnum_t &out)
 {
-	BYTE in; arc >> in; out = (psprnum_t)in; return arc;
+	byte in; arc >> in; out = (psprnum_t)in; return arc;
 }
 
 typedef struct pspdef_s
@@ -84,5 +84,3 @@ FArchive &operator<< (FArchive &, pspdef_t &);
 FArchive &operator>> (FArchive &, pspdef_t &);
 
 #endif	// __P_PSPR_H__
-
-
