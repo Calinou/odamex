@@ -93,9 +93,6 @@ typedef unsigned char byte;
 typedef unsigned char		BYTE;
 typedef signed char			SBYTE;
 
-typedef unsigned short		WORD;
-typedef signed short		SWORD;
-
 typedef uint32_t BITFIELD;
 typedef uint64_t dtime_t;
 

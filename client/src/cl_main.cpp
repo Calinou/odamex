@@ -2434,7 +2434,7 @@ void CL_SpawnMobj()
 	unsigned short type = MSG_ReadShort();
 	uint32_t netid = MSG_ReadUnVarint();
 	byte rndindex = MSG_ReadByte();
-	SWORD state = MSG_ReadShort();
+	int16_t state = MSG_ReadShort();
 
 	if(type >= NUMMOBJTYPES)
 		return;
@@ -3381,7 +3381,7 @@ void CL_StartFullUpdate()
 void CL_SetMobjState()
 {
 	AActor *mo = P_FindThingById (MSG_ReadUnVarint() );
-	SWORD s = MSG_ReadShort();
+	int16_t s = MSG_ReadShort();
 
 	if (!mo || s >= NUMSTATES)
 		return;

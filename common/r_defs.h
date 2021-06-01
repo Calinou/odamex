@@ -246,7 +246,7 @@ struct sector_s
 
 	bool alwaysfake;	// [RH] Always apply heightsec modifications?
 	byte waterzone;		// [RH] Sector is underwater?
-	WORD MoreFlags;		// [RH] Misc sector flags
+	uint16_t MoreFlags;		// [RH] Misc sector flags
 
 	// [RH] Action specials for sectors. Like Skull Tag, but more
 	// flexible in a Bloody way. SecActTarget forms a list of actors

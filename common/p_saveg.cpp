@@ -142,7 +142,7 @@ void P_SerializeWorld (FArchive &arc)
 				<< li->special
 				<< li->lucency
 				<< li->id
-				<< li->args[0] << li->args[1] << li->args[2] << li->args[3] << li->args[4] << (WORD)0;
+				<< li->args[0] << li->args[1] << li->args[2] << li->args[3] << li->args[4] << (uint16_t)0;
 
 			for (j = 0; j < 2; j++)
 			{
@@ -240,7 +240,7 @@ void P_SerializeWorld (FArchive &arc)
 		// do lines
 		for (i = 0, li = lines; i < numlines; i++, li++)
 		{
-		    WORD dummy;
+		    uint16_t dummy;
 			arc >> li->flags
 				>> li->special
 				>> li->lucency
@@ -332,4 +332,3 @@ void P_SerializePolyobjs (FArchive &arc)
 }
 
 VERSION_CONTROL (p_saveg_cpp, "$Id$")
-

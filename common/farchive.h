@@ -155,7 +155,7 @@ public:
 	uint32_t ReadCount();
 
 	FArchive& operator<< (BYTE c);
-	FArchive& operator<< (WORD s);
+	FArchive& operator<< (uint16_t s);
 	FArchive& operator<< (uint32_t i);
 	FArchive& operator<< (uint64_t i);
 	FArchive& operator<< (float f);
@@ -166,7 +166,7 @@ public:
 
 	inline	FArchive& operator<< (char c) { return operator<< ((BYTE)c); }
 	inline	FArchive& operator<< (SBYTE c) { return operator<< ((BYTE)c); }
-	inline	FArchive& operator<< (SWORD s) { return operator<< ((WORD)s); }
+	inline	FArchive& operator<< (int16_t s) { return operator<< ((uint16_t)s); }
 	inline	FArchive& operator<< (int32_t i) { return operator<< ((uint32_t)i); }
 	inline	FArchive& operator<< (int64_t i) { return operator<< ((uint64_t)i); }
 	inline	FArchive& operator<< (const unsigned char* str) { return operator<< ((const char* )str); }
@@ -174,7 +174,7 @@ public:
 	inline	FArchive& operator<< (bool b) { return operator<< ((BYTE)b); }
 
 	FArchive& operator>> (BYTE& c);
-	FArchive& operator>> (WORD& s);
+	FArchive& operator>> (uint16_t& s);
 	FArchive& operator>> (uint32_t& i);
 	FArchive& operator>> (uint64_t& i);
 	FArchive& operator>> (float& f);
@@ -185,7 +185,7 @@ public:
 
 	inline	FArchive& operator>> (char& c) { BYTE in; operator>> (in); c = (char)in; return *this; }
 	inline	FArchive& operator>> (SBYTE& c) { BYTE in; operator>> (in); c = (SBYTE)in; return *this; }
-	inline	FArchive& operator>> (SWORD& s) { WORD in; operator>> (in); s = (SWORD)in; return *this; }
+	inline	FArchive& operator>> (int16_t& s) { uint16_t in; operator>> (in); s = (int16_t)in; return *this; }
 	inline	FArchive& operator>> (int32_t& i) { uint32_t in; operator>> (in); i = (int32_t)in; return *this; }
 	inline	FArchive& operator>> (int64_t& i) { uint64_t in; operator>> (in); i = (int64_t)in; return *this; }
 	//inline	FArchive& operator>> (unsigned char *&str) { return operator>> ((char *&)str); }

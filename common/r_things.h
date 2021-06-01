@@ -35,8 +35,8 @@ struct particle_s {
 	byte	size;
 	byte	fade;
 	int		color;
-	WORD	next;
-	WORD	nextinsubsector;
+	uint16_t	next;
+	uint16_t	nextinsubsector;
 };
 typedef struct particle_s particle_t;
 
@@ -44,9 +44,9 @@ extern int	NumParticles;
 extern int	ActiveParticles;
 extern int	InactiveParticles;
 extern particle_t *Particles;
-extern TArray<WORD>     ParticlesInSubsec;
+extern TArray<uint16_t>     ParticlesInSubsec;
 
-const WORD NO_PARTICLE = 0xffff;
+const uint16_t NO_PARTICLE = 0xffff;
 
 #ifdef _MSC_VER
 __inline particle_t *NewParticle (void)
@@ -95,4 +95,3 @@ void R_ClearSprites (void);
 void R_DrawMasked (void);
 
 #endif
-

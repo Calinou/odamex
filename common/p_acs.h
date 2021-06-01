@@ -12,7 +12,7 @@
 
 struct ScriptPtr
 {
-	WORD Number;
+	uint16_t Number;
 	BYTE Type;
 	BYTE ArgCount;
 	uint32_t Address;
@@ -20,8 +20,8 @@ struct ScriptPtr
 
 struct ScriptPtr1
 {
-	WORD Number;
-	WORD Type;
+	uint16_t Number;
+	uint16_t Type;
 	uint32_t Address;
 	uint32_t ArgCount;
 };
@@ -72,7 +72,7 @@ public:
 	void PrepLocale (uint32_t userpref, uint32_t userdef, uint32_t syspref, uint32_t sysdef);
 	const char *LookupString (uint32_t index, uint32_t ofs=0) const;
 	const char *LocalizeString (uint32_t index) const;
-	void StartTypedScripts (WORD type, AActor *activator, int arg0=0, int arg1=0, int arg2=0, bool always = true) const;
+	void StartTypedScripts (uint16_t type, AActor *activator, int arg0=0, int arg1=0, int arg2=0, bool always = true) const;
 	uint32_t PC2Ofs (int *pc) const { return (BYTE *)pc - Data; }
 	int *Ofs2PC (uint32_t ofs) const { return (int *)(Data + ofs); }
 	ACSFormat GetFormat() const { return Format; }

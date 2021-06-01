@@ -1369,14 +1369,14 @@ extern const char *sprnames[NUMSPRITES+1];
 inline FArchive &operator<< (FArchive &arc, state_t *state)
 {
 	if (state)
-		return arc << (WORD)(state - states);
+		return arc << (uint16_t)(state - states);
 	else
-		return arc << (WORD)0xffff;
+		return arc << (uint16_t)0xffff;
 }
 
 inline FArchive &operator>> (FArchive &arc, state_t *&state)
 {
-	WORD ofs;
+	uint16_t ofs;
 	arc >> ofs;
 	if (ofs == 0xffff)
 		state = NULL;
@@ -1643,14 +1643,14 @@ extern mobjinfo_t mobjinfo[NUMMOBJTYPES];
 inline FArchive &operator<< (FArchive &arc, mobjinfo_t *info)
 {
 	if (info)
-		return arc << (WORD)(info - mobjinfo);
+		return arc << (uint16_t)(info - mobjinfo);
 	else
-		return arc << (WORD)0xffff;
+		return arc << (uint16_t)0xffff;
 }
 
 inline FArchive &operator>> (FArchive &arc, mobjinfo_t *&info)
 {
-	WORD ofs;
+	uint16_t ofs;
 	arc >> ofs;
 	if (ofs == 0xffff)
 		info = NULL;

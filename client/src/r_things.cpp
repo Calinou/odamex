@@ -93,7 +93,7 @@ extern int				NumParticles;
 extern int				ActiveParticles;
 extern int				InactiveParticles;
 extern particle_t		*Particles;
-TArray<WORD>			ParticlesInSubsec;
+TArray<uint16_t>			ParticlesInSubsec;
 
 void R_CacheSprite (spritedef_t *sprite)
 {
