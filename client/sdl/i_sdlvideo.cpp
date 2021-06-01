@@ -20,6 +20,8 @@
 //
 //-----------------------------------------------------------------------------
 
+#include "doomtype.h"
+
 #include "i_sdl.h"
 #include <stdio.h>
 #include <stdlib.h>

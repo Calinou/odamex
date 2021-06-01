@@ -26,11 +26,13 @@
 #ifndef __DOOMTYPE__
 #define __DOOMTYPE__
 
+// Portable <stdint.h>
+
+#define __STDC_LIMIT_MACROS
+#include "pstdint.h"
+
 // Standard libc/STL includes we use in countless places
 #include <string>
-
-// Portable <stdint.h>
-#include "pstdint.h"
 
 #include "version.h"
 #include "errors.h"
